@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: carDealership
+
+  datasource:
+    url: "jdbc:h2:mem:accounttestdb"
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+      defer-datasource-initialization: true
+
+  h2:
+    console:
+      enabled:true
