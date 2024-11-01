@@ -6,13 +6,25 @@ spring:
     url: "jdbc:h2:mem:accounttestdb"
     driverClassName: org.h2.Driver
     username: sa
-    password:
+    password: ""
 
   jpa:
     hibernate:
       ddl-auto: create
       defer-datasource-initialization: true
-
+      show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
   h2:
     console:
       enabled:true
+
+
+logging:
+  level:
+    org:
+      springframework:
+        jdbc:
+          datasource:
+            init: DEBUG
