@@ -13,13 +13,10 @@ public class EventBusConfig {
         return new EventBus() {
             @Override
             public void publish(DomainEvent event, String metadata) {
-                System.out.println("event = " + event + ", metadata = " + metadata);
-                System.out.println("event = " + event);
             }
 
             @Override
             public void subscribe(EventBusSubscriber subscriber) {
-                System.out.println("subscriber = " + subscriber);
             }
         };
     }
