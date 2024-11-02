@@ -21,6 +21,12 @@ public class Pickup {
     protected Pickup() {
     }
 
+    protected Pickup(Date time, PickupResult result, String reason) {
+        this.time = time;
+        this.result = result;
+        this.reason = reason;
+    }
+
     protected ValidationResult validate() {
         if (result == PickupResult.Rescheduled && StringUtils.isBlank(reason)) {
             return ValidationResult.fail("Please provide reason for rescheduling");
