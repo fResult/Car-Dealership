@@ -28,15 +28,15 @@ public class VehicleRegistrationId {
         this.id = id;
     }
 
-    public ValidationResult isValid() {
+    public ValidationResult validate() {
         String regexPattern = "[\\w\\s]*[-\\s]?[\\w\\s]*";
         Pattern pattern = Pattern.compile(regexPattern);
         Matcher matcher = pattern.matcher(id);
 
         boolean isMatch = matcher.matches();
-        if (!isMatch) {
+        if (!isMatch)
             return ValidationResult.fail("Invalid Vehicle Registration Number");
-        }
+
         return ValidationResult.success();
     }
 }

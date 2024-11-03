@@ -4,6 +4,8 @@ import com.example.carDealership.domain.carCollecting.valueObjects.CarColor;
 import com.example.carDealership.domain.carCollecting.valueObjects.Coordinate;
 import com.example.carDealership.domain.carCollecting.valueObjects.Status;
 import com.example.carDealership.domain.carCollecting.valueObjects.VehicleRegistrationId;
+import com.example.carDealership.domain.validation.ValidationException.ValidattionException;
+import io.micrometer.common.util.StringUtils;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -36,6 +38,56 @@ public class CarCollection {
 
     @OneToMany
     private List<Pickup> pickups;
+
+    public static CarCollection schedule(
+            String reference,
+            Date scheduleTime,
+            String contactName,
+            String contactPhoneNumber,
+            String address,
+            String carModel,
+            CarColor color,
+            VehicleRegistrationId vehicleRegistrationId,
+            Coordinate place
+    ) throws ValidattionException {
+        var carCollection = new CarCollection();
+
+        if (StringUtils.isBlank(reference))
+            throw new ValidattionException("Reference number is required");
+        if (StringUtils.isBlank(contactName))
+            throw new ValidattionException("Contact Name is required");
+        if (StringUtils.isBlank(contactPhoneNumber))
+            throw new ValidattionException("Contact Phone Number is required");
+        if (StringUtils.isBlank(address))
+            throw new ValidattionException("Address is required");
+        if (StringUtils.isBlank(carModel))
+            throw new ValidattionException("Car Model is required");
+        if (color == null)
+            throw new ValidattionException("Color is required");
+        if (scheduleTime == null)
+            throw new ValidattionException("Schedule Time is required");
+
+        var vehicleRegistrationIdValidationResult = vehicleRegistrationId.validate();
+        if (!vehicleRegistrationIdValidationResult.getIsSuccess())
+            throw new ValidattionException(vehicleRegistrationIdValidationResult.getErrorMessage());
+
+        var coordinateValidationResult = place.validate();
+        if (!coordinateValidationResult.getIsSuccess())
+            throw new ValidattionException(coordinateValidationResult.getErrorMessage());
+
+        carCollection.reference = reference;
+        carCollection.scheduleTime = scheduleTime;
+        carCollection.contactName = contactName;
+        carCollection.contactPhoneNumber = contactPhoneNumber;
+        carCollection.address = address;
+        carCollection.carModel = carModel;
+        carCollection.color = color;
+        carCollection.vehicleRegistrationId = vehicleRegistrationId;
+        carCollection.status = Status.Scheduled;
+        carCollection.place = place;
+
+        return carCollection;
+    }
 
     public long getId() {
         return id;
