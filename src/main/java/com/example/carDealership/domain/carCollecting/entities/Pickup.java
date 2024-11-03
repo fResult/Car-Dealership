@@ -27,6 +27,38 @@ public class Pickup {
         this.reason = reason;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    protected void setId(long id) {
+        this.id = id;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    protected void setTime(Date time) {
+        this.time = time;
+    }
+
+    public PickupResult getResult() {
+        return result;
+    }
+
+    protected void setResult(PickupResult result) {
+        this.result = result;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    protected void setReason(String reason) {
+        this.reason = reason;
+    }
+
     protected ValidationResult validate() {
         if (result == PickupResult.Rescheduled && StringUtils.isBlank(reason)) {
             return ValidationResult.fail("Please provide reason for rescheduling");

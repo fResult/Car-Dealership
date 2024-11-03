@@ -15,6 +15,102 @@ public class CarCollection {
     @GeneratedValue
     private long id;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public Date getScheduleTime() {
+        return scheduleTime;
+    }
+
+    public void setScheduleTime(Date scheduleTime) {
+        this.scheduleTime = scheduleTime;
+    }
+
+    public String getContactName() {
+        return contactName;
+    }
+
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
+    }
+
+    public String getContactPhoneNumber() {
+        return contactPhoneNumber;
+    }
+
+    public void setContactPhoneNumber(String contactPhoneNumber) {
+        this.contactPhoneNumber = contactPhoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCarModel() {
+        return carModel;
+    }
+
+    public void setCarModel(String carModel) {
+        this.carModel = carModel;
+    }
+
+    public CarColor getColor() {
+        return color;
+    }
+
+    public void setColor(CarColor color) {
+        this.color = color;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public VehicleRegistrationId getVehicleRegistrationId() {
+        return vehicleRegistrationId;
+    }
+
+    public void setVehicleRegistrationId(VehicleRegistrationId vehicleRegistrationId) {
+        this.vehicleRegistrationId = vehicleRegistrationId;
+    }
+
+    public Coordinate getPlace() {
+        return place;
+    }
+
+    public void setPlace(Coordinate place) {
+        this.place = place;
+    }
+
+    public List<Pickup> getPickups() {
+        return pickups;
+    }
+
+    public void setPickups(List<Pickup> pickups) {
+        this.pickups = pickups;
+    }
+
     private String reference;
 
     private Date scheduleTime;
