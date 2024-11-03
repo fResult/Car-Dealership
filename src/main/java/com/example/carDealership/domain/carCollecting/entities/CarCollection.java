@@ -15,6 +15,28 @@ public class CarCollection {
     @GeneratedValue
     private long id;
 
+    private String reference;
+    private Date scheduleTime;
+    private String contactName;
+    private String contactPhoneNumber;
+    private String address;
+    private String carModel;
+
+    @Enumerated(EnumType.STRING)
+    private CarColor color;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    @Embedded
+    private VehicleRegistrationId vehicleRegistrationId;
+
+    @Embedded
+    private Coordinate place;
+
+    @OneToMany
+    private List<Pickup> pickups;
+
     public long getId() {
         return id;
     }
@@ -111,31 +133,7 @@ public class CarCollection {
         this.pickups = pickups;
     }
 
-    private String reference;
 
-    private Date scheduleTime;
 
-    private String contactName;
-
-    private String contactPhoneNumber;
-
-    private String address;
-
-    private String carModel;
-
-    @Enumerated(EnumType.STRING)
-    private CarColor color;
-
-    @Enumerated(EnumType.STRING)
-    private Status status;
-
-    @Embedded
-    private VehicleRegistrationId vehicleRegistrationId;
-
-    @Embedded
-    private Coordinate place;
-
-    @OneToMany
-    private List<Pickup> pickups;
 
 }
