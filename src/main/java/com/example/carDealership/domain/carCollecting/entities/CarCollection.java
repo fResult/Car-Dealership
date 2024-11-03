@@ -66,6 +66,10 @@ public class CarCollection {
             throw new ValidattionException("Color is required");
         if (scheduleTime == null)
             throw new ValidattionException("Schedule Time is required");
+        if (vehicleRegistrationId == null)
+            throw new ValidattionException("Vehicle Registration Id is required");
+        if (place == null)
+            throw new ValidattionException("Place is required");
 
         var vehicleRegistrationIdValidationResult = vehicleRegistrationId.validate();
         if (!vehicleRegistrationIdValidationResult.getIsSuccess())
