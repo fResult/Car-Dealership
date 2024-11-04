@@ -5,7 +5,7 @@ import com.example.carDealership.domain.carCollecting.entities.CarCollection;
 import com.example.carDealership.domain.carCollecting.valueObjects.CarColor;
 import com.example.carDealership.domain.carCollecting.valueObjects.Coordinate;
 import com.example.carDealership.domain.carCollecting.valueObjects.VehicleRegistrationId;
-import com.example.carDealership.domain.validation.ValidationException.ValidattionException;
+import com.example.carDealership.domain.validations.ValidattionException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

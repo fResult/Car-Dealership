@@ -189,6 +189,9 @@ public class CarCollection {
         this.pickups = pickups;
     }
 
+    public void carDroppedToWarehouse() {
+        this.status = Status.Dropped;
+    }
 
 
 
