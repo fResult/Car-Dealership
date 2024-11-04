@@ -194,5 +194,19 @@ public class CarCollection {
     }
 
 
+    public void recordPickup(PickupResult result, String reason) throws ValidattionException {
+        var pickup = new Pickup(new Date(), result, reason);
+        var pickupValidationResult = pickup.validate();
 
+        if (!pickupValidationResult.getIsSuccess())
+            throw new ValidattionException(pickupValidationResult.getErrorMessage());
+
+        if (status != Status.Scheduled)
+            throw new ValidattionException("Car Collection is not scheduled for picking up. Cannot record pickup");
+
+        pickups.add(pickup);
+        if (pickup.getResult() == PickupResult.Success) {
+            status = Status.PickedUp;
+        }
+    }
 }
