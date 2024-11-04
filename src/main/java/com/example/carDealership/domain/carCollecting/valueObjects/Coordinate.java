@@ -1,15 +1,12 @@
 package com.example.carDealership.domain.carCollecting.valueObjects;
 
-import com.example.carDealership.domain.carCollecting.validations.ValidationResult;
+import com.example.carDealership.domain.validations.ValidationResult;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class Coordinate {
-    private double latitude;
-    private double longitude;
-
-    public Coordinate() {
-    }
+    private final double latitude;
+    private final double longitude;
 
     public Coordinate(double latitude, double longitude) {
         this.latitude = latitude;

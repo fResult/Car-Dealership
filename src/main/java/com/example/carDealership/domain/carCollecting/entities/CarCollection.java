@@ -4,7 +4,7 @@ import com.example.carDealership.domain.carCollecting.valueObjects.CarColor;
 import com.example.carDealership.domain.carCollecting.valueObjects.Coordinate;
 import com.example.carDealership.domain.carCollecting.valueObjects.Status;
 import com.example.carDealership.domain.carCollecting.valueObjects.VehicleRegistrationId;
-import com.example.carDealership.domain.validation.ValidationException.ValidattionException;
+import com.example.carDealership.domain.validations.ValidattionException;
 import io.micrometer.common.util.StringUtils;
 import jakarta.persistence.*;
 

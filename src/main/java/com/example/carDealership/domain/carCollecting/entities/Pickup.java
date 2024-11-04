@@ -1,6 +1,6 @@
 package com.example.carDealership.domain.carCollecting.entities;
 
-import com.example.carDealership.domain.carCollecting.validations.ValidationResult;
+import com.example.carDealership.domain.validations.ValidationResult;
 import io.micrometer.common.util.StringUtils;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -60,9 +60,8 @@ public class Pickup {
     }
 
     protected ValidationResult validate() {
-        if (result == PickupResult.Rescheduled && StringUtils.isBlank(reason)) {
+        if (result == PickupResult.Rescheduled && StringUtils.isBlank(reason))
             return ValidationResult.fail("Please provide reason for rescheduling");
-        }
 
         return ValidationResult.success();
     }

@@ -1,6 +1,6 @@
 package com.example.carDealership.domain.carCollecting.valueObjects;
 
-import com.example.carDealership.domain.carCollecting.validations.ValidationResult;
+import com.example.carDealership.domain.validations.ValidationResult;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
@@ -21,7 +21,6 @@ public class VehicleRegistrationId {
     }
 
     public VehicleRegistrationId() {
-
     }
 
     public VehicleRegistrationId(String id) {
