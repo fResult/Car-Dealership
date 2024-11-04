@@ -190,7 +190,7 @@ public class CarCollection {
     }
 
     public void carDroppedToWarehouse() {
-        this.status = Status.Dropped;
+        this.setStatus(Status.Dropped);
     }
 
 
