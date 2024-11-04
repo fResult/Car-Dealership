@@ -189,7 +189,10 @@ public class CarCollection {
         this.pickups = pickups;
     }
 
-    public void carDroppedToWarehouse() {
+    public void carDroppedToWarehouse() throws ValidattionException {
+        if (status != Status.Scheduled)
+            throw new ValidattionException("Car Collection already dropped");
+
         this.setStatus(Status.Dropped);
     }
 
