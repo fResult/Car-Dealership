@@ -2,7 +2,7 @@ package com.example.carDealership.domains.warehouse;
 
 import com.example.carDealership.domains.DomainEvent;
 import com.example.carDealership.domains.EventBusSubscriber;
-import com.example.carDealership.persistences.StockRepository.StockRepository;
+import com.example.carDealership.persistences.StockRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

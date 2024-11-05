@@ -1,4 +1,4 @@
-package com.example.carDealership.persistences.StockRepository;
+package com.example.carDealership.persistences;
 
 import com.example.carDealership.domains.warehouse.Stock;
 import org.springframework.data.repository.CrudRepository;
