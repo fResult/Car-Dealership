@@ -44,7 +44,7 @@ public class Loading {
 
         // TODO: Handle throwing error in the proper place
         var carCollection = carCollectingRepository.findCarCollectionById(carCollectionId).orElseThrow();
-        var stock = carCollectingRepository.findStocksByModel(carCollection.getCarModel()).getFirst();
+        var stock = carCollectingRepository.findStockByModel(carCollection.getCarModel()).orElseThrow();
 
         relatedCarCollection.carDroppedToWarehouse();
         relatedStock.incrementStockQuantity(1);
