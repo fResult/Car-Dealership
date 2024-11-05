@@ -11,9 +11,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+// For coordinating with between the Repository and Domain Model
 @Component
 public class CarCollectingUseCases {
-    private CarCollectingRepository carCollectingRepository;
+    private final CarCollectingRepository carCollectingRepository;
 
     @Autowired
     private EventBus eventBus;
