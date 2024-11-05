@@ -1,4 +1,4 @@
-package com.example.carDealership.domain.validations;
+package com.example.carDealership.domains.validations;
 
 public class ValidationResult {
     private final Boolean isSuccess;

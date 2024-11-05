@@ -1,11 +1,11 @@
 package com.example.carDealership;
 
-import com.example.carDealership.domain.EventBus;
-import com.example.carDealership.domain.carCollecting.entities.CarCollection;
-import com.example.carDealership.domain.carCollecting.valueObjects.CarColor;
-import com.example.carDealership.domain.carCollecting.valueObjects.Coordinate;
-import com.example.carDealership.domain.carCollecting.valueObjects.VehicleRegistrationId;
-import com.example.carDealership.domain.validations.ValidattionException;
+import com.example.carDealership.domains.EventBus;
+import com.example.carDealership.domains.carCollecting.entities.CarCollection;
+import com.example.carDealership.domains.carCollecting.valueObjects.CarColor;
+import com.example.carDealership.domains.carCollecting.valueObjects.Coordinate;
+import com.example.carDealership.domains.carCollecting.valueObjects.VehicleRegistrationId;
+import com.example.carDealership.domains.validations.ValidattionException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -17,7 +17,7 @@ public class CarDealershipApplication {
         var context = SpringApplication.run(CarDealershipApplication.class, args);
 
         var bus = context.getBean(EventBus.class);
-        var warehouseEventHandler = context.getBean(com.example.carDealership.domain.warehouse.EventHandler.class);
+        var warehouseEventHandler = context.getBean(com.example.carDealership.domains.warehouse.EventHandler.class);
         bus.subscribe(warehouseEventHandler);
 
         testScheduleCarCollection();

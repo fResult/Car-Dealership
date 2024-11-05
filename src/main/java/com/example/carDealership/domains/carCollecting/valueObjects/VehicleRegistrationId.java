@@ -1,6 +1,6 @@
-package com.example.carDealership.domain.carCollecting.valueObjects;
+package com.example.carDealership.domains.carCollecting.valueObjects;
 
-import com.example.carDealership.domain.validations.ValidationResult;
+import com.example.carDealership.domains.validations.ValidationResult;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 

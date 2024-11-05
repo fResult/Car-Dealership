@@ -1,4 +1,4 @@
-package com.example.carDealership.domain;
+package com.example.carDealership.domains;
 
 public interface EventBus {
     void publish(DomainEvent event, String metadata);

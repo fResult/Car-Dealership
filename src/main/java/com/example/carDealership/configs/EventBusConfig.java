@@ -1,8 +1,8 @@
 package com.example.carDealership.configs;
 
-import com.example.carDealership.domain.DomainEvent;
-import com.example.carDealership.domain.EventBus;
-import com.example.carDealership.domain.EventBusSubscriber;
+import com.example.carDealership.domains.DomainEvent;
+import com.example.carDealership.domains.EventBus;
+import com.example.carDealership.domains.EventBusSubscriber;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

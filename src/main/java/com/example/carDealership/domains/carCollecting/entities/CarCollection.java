@@ -1,10 +1,10 @@
-package com.example.carDealership.domain.carCollecting.entities;
+package com.example.carDealership.domains.carCollecting.entities;
 
-import com.example.carDealership.domain.carCollecting.valueObjects.CarColor;
-import com.example.carDealership.domain.carCollecting.valueObjects.Coordinate;
-import com.example.carDealership.domain.carCollecting.valueObjects.Status;
-import com.example.carDealership.domain.carCollecting.valueObjects.VehicleRegistrationId;
-import com.example.carDealership.domain.validations.ValidattionException;
+import com.example.carDealership.domains.carCollecting.valueObjects.CarColor;
+import com.example.carDealership.domains.carCollecting.valueObjects.Coordinate;
+import com.example.carDealership.domains.carCollecting.valueObjects.Status;
+import com.example.carDealership.domains.carCollecting.valueObjects.VehicleRegistrationId;
+import com.example.carDealership.domains.validations.ValidattionException;
 import io.micrometer.common.util.StringUtils;
 import jakarta.persistence.*;
 

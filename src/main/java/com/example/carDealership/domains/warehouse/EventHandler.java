@@ -1,7 +1,7 @@
-package com.example.carDealership.domain.warehouse;
+package com.example.carDealership.domains.warehouse;
 
-import com.example.carDealership.domain.DomainEvent;
-import com.example.carDealership.domain.EventBusSubscriber;
+import com.example.carDealership.domains.DomainEvent;
+import com.example.carDealership.domains.EventBusSubscriber;
 import com.example.carDealership.persistences.StockRepository.StockRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

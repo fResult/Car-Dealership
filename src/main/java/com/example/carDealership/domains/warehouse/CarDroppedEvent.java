@@ -1,4 +1,4 @@
-package com.example.carDealership.domain.warehouse;
+package com.example.carDealership.domains.warehouse;
 
 public class CarDroppedEvent {
     private String model;

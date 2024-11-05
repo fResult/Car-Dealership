@@ -1,7 +1,9 @@
-package com.example.carDealership.domain.carCollecting.entities;
+package com.example.carDealership.domains.carCollecting.entities;
 
-import com.example.carDealership.domain.validations.ValidattionException;
-import com.example.carDealership.domain.warehouse.Stock;
+import com.example.carDealership.domains.CarCollectingRepository;
+import com.example.carDealership.domains.CarCollectingRepository.CarCollectingRepository;
+import com.example.carDealership.domains.validations.ValidattionException;
+import com.example.carDealership.domains.warehouse.Stock;
 
 import java.util.Date;
 
@@ -14,6 +16,10 @@ public class Loading {
     private String receivedEmployeeId;
     private Date timestamp;
     private String comment;
+
+    public Loading(CarCollectingRepository carCollectionRepository) {
+
+    }
 
     public long getId() {
         return id;
@@ -38,5 +44,7 @@ public class Loading {
 
         relatedCarCollection.carDroppedToWarehouse();
         relatedStock.incrementStockQuantity(1);
+
+
     }
 }

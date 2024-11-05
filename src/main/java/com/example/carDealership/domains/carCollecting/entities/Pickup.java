@@ -1,6 +1,6 @@
-package com.example.carDealership.domain.carCollecting.entities;
+package com.example.carDealership.domains.carCollecting.entities;
 
-import com.example.carDealership.domain.validations.ValidationResult;
+import com.example.carDealership.domains.validations.ValidationResult;
 import io.micrometer.common.util.StringUtils;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
