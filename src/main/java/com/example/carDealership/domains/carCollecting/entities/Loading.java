@@ -1,7 +1,7 @@
 package com.example.carDealership.domains.carCollecting.entities;
 
 import com.example.carDealership.domains.CarCollectingRepository;
-import com.example.carDealership.domains.validations.ValidattionException;
+import com.example.carDealership.domains.validations.ValidationException;
 import com.example.carDealership.domains.warehouse.Stock;
 
 import java.util.Date;
@@ -38,7 +38,7 @@ public class Loading {
     }
 
     // And other related fields in the form
-    public CarCollection droppedCarAtWarehouse(long carCollectionId) throws ValidattionException {
+    public CarCollection droppedCarAtWarehouse(long carCollectionId) throws ValidationException {
         // Do something with its own entity
         // Such as validation, update things, etc.
 

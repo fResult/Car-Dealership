@@ -5,7 +5,7 @@ import com.example.carDealership.domains.carCollecting.entities.CarCollection;
 import com.example.carDealership.domains.carCollecting.valueObjects.CarColor;
 import com.example.carDealership.domains.carCollecting.valueObjects.Coordinate;
 import com.example.carDealership.domains.carCollecting.valueObjects.VehicleRegistrationId;
-import com.example.carDealership.domains.validations.ValidattionException;
+import com.example.carDealership.domains.validations.ValidationException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -41,7 +41,7 @@ public class CarDealershipApplication {
             );
 
             System.out.println("Scheduled Car Collection Time: " + carCollection.getScheduleTime());
-        } catch (ValidattionException ex) {
+        } catch (ValidationException ex) {
             ex.printStackTrace();
         }
     }

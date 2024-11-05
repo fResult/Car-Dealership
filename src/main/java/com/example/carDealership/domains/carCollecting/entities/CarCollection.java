@@ -4,7 +4,7 @@ import com.example.carDealership.domains.carCollecting.valueObjects.CarColor;
 import com.example.carDealership.domains.carCollecting.valueObjects.Coordinate;
 import com.example.carDealership.domains.carCollecting.valueObjects.Status;
 import com.example.carDealership.domains.carCollecting.valueObjects.VehicleRegistrationId;
-import com.example.carDealership.domains.validations.ValidattionException;
+import com.example.carDealership.domains.validations.ValidationException;
 import io.micrometer.common.util.StringUtils;
 import jakarta.persistence.*;
 
@@ -49,35 +49,35 @@ public class CarCollection {
             CarColor color,
             VehicleRegistrationId vehicleRegistrationId,
             Coordinate place
-    ) throws ValidattionException {
+    ) throws ValidationException {
         var carCollection = new CarCollection();
 
         if (StringUtils.isBlank(reference))
-            throw new ValidattionException("Reference number is required");
+            throw new ValidationException("Reference number is required");
         if (StringUtils.isBlank(contactName))
-            throw new ValidattionException("Contact Name is required");
+            throw new ValidationException("Contact Name is required");
         if (StringUtils.isBlank(contactPhoneNumber))
-            throw new ValidattionException("Contact Phone Number is required");
+            throw new ValidationException("Contact Phone Number is required");
         if (StringUtils.isBlank(address))
-            throw new ValidattionException("Address is required");
+            throw new ValidationException("Address is required");
         if (StringUtils.isBlank(carModel))
-            throw new ValidattionException("Car Model is required");
+            throw new ValidationException("Car Model is required");
         if (color == null)
-            throw new ValidattionException("Color is required");
+            throw new ValidationException("Color is required");
         if (scheduleTime == null)
-            throw new ValidattionException("Schedule Time is required");
+            throw new ValidationException("Schedule Time is required");
         if (vehicleRegistrationId == null)
-            throw new ValidattionException("Vehicle Registration Id is required");
+            throw new ValidationException("Vehicle Registration Id is required");
         if (place == null)
-            throw new ValidattionException("Place is required");
+            throw new ValidationException("Place is required");
 
         var vehicleRegistrationIdValidationResult = vehicleRegistrationId.validate();
         if (!vehicleRegistrationIdValidationResult.getIsSuccess())
-            throw new ValidattionException(vehicleRegistrationIdValidationResult.getErrorMessage());
+            throw new ValidationException(vehicleRegistrationIdValidationResult.getErrorMessage());
 
         var coordinateValidationResult = place.validate();
         if (!coordinateValidationResult.getIsSuccess())
-            throw new ValidattionException(coordinateValidationResult.getErrorMessage());
+            throw new ValidationException(coordinateValidationResult.getErrorMessage());
 
         carCollection.reference = reference;
         carCollection.scheduleTime = scheduleTime;
@@ -189,27 +189,35 @@ public class CarCollection {
         this.pickups = pickups;
     }
 
-    public void carDroppedToWarehouse() throws ValidattionException {
+    public void carDroppedToWarehouse() throws ValidationException {
         if (status != Status.Scheduled)
-            throw new ValidattionException("Car Collection already dropped");
+            throw new ValidationException("Car Collection already dropped");
 
         this.setStatus(Status.Dropped);
     }
 
 
-    public void recordPickup(PickupResult result, String reason) throws ValidattionException {
+    public void recordPickup(PickupResult result, String reason) throws ValidationException {
         var pickup = new Pickup(new Date(), result, reason);
         var pickupValidationResult = pickup.validate();
 
         if (!pickupValidationResult.getIsSuccess())
-            throw new ValidattionException(pickupValidationResult.getErrorMessage());
+            throw new ValidationException(pickupValidationResult.getErrorMessage());
 
         if (status != Status.Scheduled)
-            throw new ValidattionException("Car Collection is not scheduled for picking up. Cannot record pickup");
+            throw new ValidationException("Car Collection is not scheduled for picking up. Cannot record pickup");
 
         pickups.add(pickup);
         if (pickup.getResult() == PickupResult.Success) {
             status = Status.PickedUp;
         }
+    }
+
+    public List<Pickup> listPickup() {
+        throw new UnsupportedOperationException();
+    }
+
+    public void changePickupResult(Long pickupId, PickupResult status) {
+        throw new UnsupportedOperationException();
     }
 }

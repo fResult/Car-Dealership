@@ -4,9 +4,8 @@ import com.example.carDealership.domains.CarCollectingRepository;
 import com.example.carDealership.domains.DomainEvent;
 import com.example.carDealership.domains.EventBus;
 import com.example.carDealership.domains.carCollecting.entities.CarCollection;
-import com.example.carDealership.domains.validations.ValidattionException;
+import com.example.carDealership.domains.validations.ValidationException;
 import com.example.carDealership.domains.warehouse.CarDroppedEvent;
-import com.example.carDealership.persistences.StockRepository.StockRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,7 @@ public class CarCollectingUseCases {
         this.carCollectingRepository = carCollectingRepository;
     }
 
-    public CarCollection dropCarAtWarehouse(long carCollectionId) throws ValidattionException {
+    public CarCollection dropCarAtWarehouse(long carCollectionId) throws ValidationException {
         var carCollection = carCollectingRepository.findCarCollectionById(carCollectionId).orElseThrow();
 
         carCollection.carDroppedToWarehouse();
