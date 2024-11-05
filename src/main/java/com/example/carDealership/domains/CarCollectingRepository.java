@@ -11,5 +11,5 @@ public interface CarCollectingRepository {
     Stock saveStock(Stock entity);
 
     Optional<CarCollection> findCarCollectionById(long id);
-    List<Stock> findStocksByModel(String model);
+    Optional<Stock> findStockByModel(String model);
 }

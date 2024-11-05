@@ -8,6 +8,7 @@ import com.example.carDealership.domains.validations.ValidationException;
 import com.example.carDealership.domains.warehouse.CarDroppedEvent;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,13 +24,20 @@ public class CarCollectingUseCases {
         this.carCollectingRepository = carCollectingRepository;
     }
 
+    @Transactional
     public CarCollection dropCarAtWarehouse(long carCollectionId) throws ValidationException {
         var carCollection = carCollectingRepository.findCarCollectionById(carCollectionId).orElseThrow();
+        var stock = carCollectingRepository.findStockByModel(carCollection.getCarModel()).orElseThrow();
 
         carCollection.carDroppedToWarehouse();
+        stock.incrementStockQuantity(1);
+
         carCollection = carCollectingRepository.saveCarCollection(carCollection);
+        carCollectingRepository.saveStock(stock);
 
         var carDroppedEventMetadata = new CarDroppedEvent();
+        carDroppedEventMetadata.setModel(carCollection.getCarModel());
+
         try {
             var objectMapper = new ObjectMapper();
             eventBus.publish(DomainEvent.CarDropped, objectMapper.writeValueAsString(carDroppedEventMetadata));
