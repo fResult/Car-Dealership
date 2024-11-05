@@ -2,12 +2,10 @@ package com.example.carDealership.domain.carCollecting.entities;
 
 import com.example.carDealership.domain.validations.ValidattionException;
 import com.example.carDealership.domain.warehouse.Stock;
-import jakarta.persistence.Entity;
 
 import java.util.Date;
 
 // From the Loading form for car dropping at warehouse
-@Entity
 public class Loading {
     private CarCollection relatedCarCollection;
     private Stock relatedStock;
