@@ -2,7 +2,7 @@ package com.example.carDealership.controllers.carCollecting;
 
 import com.example.carDealership.controllers.CarCollectionRequest;
 import com.example.carDealership.controllers.CarCollectionResponse;
-import org.springframework.http.HttpStatusCode;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +17,7 @@ public class ScheduleController {
     public ResponseEntity<CarCollectionResponse> schedule(@RequestBody CarCollectionRequest carCollection) {
         // var carCollection = CarCollection.schedule();
 
-        var detail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(405), "Not Implement Yet");
+        var detail = ProblemDetail.forStatusAndDetail(HttpStatus.METHOD_NOT_ALLOWED, "Not Implement Yet");
         return ResponseEntity.of(detail).build();
     }
 }
