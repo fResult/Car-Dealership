@@ -5,6 +5,7 @@ import com.example.carDealership.domains.EventBus;
 import com.example.carDealership.domains.carCollecting.entities.CarCollection;
 import com.example.carDealership.domains.validations.ValidationException;
 import com.example.carDealership.domains.warehouse.CarDroppedEvent;
+import com.example.carDealership.domains.warehouse.Stock;
 import com.example.carDealership.persistences.CarCollectingRepositoryImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,13 +28,15 @@ public class CarCollectingUseCases {
     @Transactional
     public CarCollection dropCarAtWarehouse(long carCollectionId) throws ValidationException {
         var carCollection = carCollectingRepository.findCarCollectionById(carCollectionId).orElseThrow();
+        var carModel = carCollection.getCarModel();
         var stock = carCollectingRepository.findStockByModel(carModel);
 
         carCollection.carDroppedToWarehouse();
-        stock.orElseThrow().incrementStockQuantity(1);
+        var stockToSave = stock.orElseGet(() -> new Stock(carModel, 0));
+        stockToSave.incrementStockQuantity(1);
 
         carCollection = carCollectingRepository.saveCarCollection(carCollection);
-        carCollectingRepository.saveStock(stock.get());
+        carCollectingRepository.saveStock(stockToSave);
 
         var carDroppedEventMetadata = new CarDroppedEvent();
         carDroppedEventMetadata.setModel(carCollection.getCarModel());
