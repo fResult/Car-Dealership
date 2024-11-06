@@ -18,6 +18,10 @@ public class CarCollectingRepositoryImpl implements CarCollectingRepository {
         this.stockRepository = stockRepository;
     }
 
+    /* Note:
+     * The method signature might be DomainEntity -> DomainEntity.
+     * And when saving the data to the DB, we need to map it to the DAO Entity first.
+     */
     @Override
     public CarCollection saveCarCollection(CarCollection entity) {
         return carCollectionRepository.save(entity);
