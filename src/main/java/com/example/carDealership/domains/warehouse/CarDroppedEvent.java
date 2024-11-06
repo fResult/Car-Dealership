@@ -1,5 +1,8 @@
 package com.example.carDealership.domains.warehouse;
 
+/* NOTE:
+ * Declare only necessary properties for CarDroppedEvent
+ */
 public class CarDroppedEvent {
     private String model;
 

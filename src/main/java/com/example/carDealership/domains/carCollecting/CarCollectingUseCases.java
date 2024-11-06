@@ -5,7 +5,6 @@ import com.example.carDealership.domains.EventBus;
 import com.example.carDealership.domains.carCollecting.entities.CarCollection;
 import com.example.carDealership.domains.validations.ValidationException;
 import com.example.carDealership.domains.warehouse.CarDroppedEvent;
-import com.example.carDealership.domains.warehouse.Stock;
 import com.example.carDealership.persistences.CarCollectingRepositoryImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,21 +27,17 @@ public class CarCollectingUseCases {
     @Transactional
     public CarCollection dropCarAtWarehouse(long carCollectionId) throws ValidationException {
         var carCollection = carCollectingRepository.findCarCollectionById(carCollectionId).orElseThrow();
-        var carModel = carCollection.getCarModel();
-        var stock = carCollectingRepository.findStockByModel(carModel);
 
         carCollection.carDroppedToWarehouse();
-        var stockToSave = stock.orElseGet(() -> new Stock(carModel, 0));
-        stockToSave.incrementStockQuantity(1);
 
         carCollection = carCollectingRepository.saveCarCollection(carCollection);
-        carCollectingRepository.saveStock(stockToSave);
 
+        // Publish event in JSON before return
+        var objectMapper = new ObjectMapper();
         var carDroppedEventMetadata = new CarDroppedEvent();
         carDroppedEventMetadata.setModel(carCollection.getCarModel());
 
         try {
-            var objectMapper = new ObjectMapper();
             eventBus.publish(DomainEvent.CarDropped, objectMapper.writeValueAsString(carDroppedEventMetadata));
         } catch (JsonProcessingException ex) {
             ex.printStackTrace();

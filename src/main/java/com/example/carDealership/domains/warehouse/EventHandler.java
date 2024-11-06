@@ -21,11 +21,13 @@ public class EventHandler implements EventBusSubscriber {
             // Turn JSON into CarDroppedEvent`
             var mapper = new ObjectMapper();
             var eventMetadata = mapper.readValue(metadata, CarDroppedEvent.class);
+            var carModel = eventMetadata.getModel();
 
             // Execute domain logic
-            var stock = stockRepository.findOneByModel(eventMetadata.getModel()).orElseThrow();
-            stock.incrementStockQuantity(1);
-            stockRepository.save(stock);
+            var stock = stockRepository.findOneByModel(carModel);
+            var stockToSave = stock.orElseGet(() -> new Stock(carModel, 0));
+            stockToSave.incrementStockQuantity(1);
+            stockRepository.save(stockToSave);
         } catch (JsonProcessingException ex) {
             ex.printStackTrace();
         }
