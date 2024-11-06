@@ -7,6 +7,10 @@ import jakarta.persistence.Embeddable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/* NOTE:
+ * Even though this class is a value object
+ * But we need to have attribute setter, because it works with the JPA
+ */
 @Embeddable
 public class VehicleRegistrationId {
     @Column(name = "vehicle_registration_id")

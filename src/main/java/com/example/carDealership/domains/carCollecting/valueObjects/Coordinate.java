@@ -3,6 +3,10 @@ package com.example.carDealership.domains.carCollecting.valueObjects;
 import com.example.carDealership.domains.validations.ValidationResult;
 import jakarta.persistence.Embeddable;
 
+/* NOTE:
+ * Even though this class is a value object
+ * But we need to have attribute setter, because it works with the JPA
+ */
 @Embeddable
 public class Coordinate {
     private double latitude;
