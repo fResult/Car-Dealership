@@ -3,7 +3,6 @@ package com.example.carDealership.domains;
 import com.example.carDealership.domains.carCollecting.entities.CarCollection;
 import com.example.carDealership.domains.warehouse.Stock;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface CarCollectingRepository {

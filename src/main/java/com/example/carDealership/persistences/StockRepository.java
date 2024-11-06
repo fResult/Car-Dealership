@@ -2,9 +2,11 @@ package com.example.carDealership.persistences;
 
 import com.example.carDealership.domains.warehouse.Stock;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface StockRepository extends CrudRepository<Stock, Long> {
     List<Stock> findByModel(String model);
 }
