@@ -22,7 +22,7 @@ public class EventHandler implements EventBusSubscriber {
                 var eventMetadata = mapper.readValue(metadata, CarDroppedEvent.class);
 
                 // Execute domain logic
-                var stock = stockRepository.findByModel(eventMetadata.getModel()).getFirst();
+                var stock = stockRepository.findOneByModel(eventMetadata.getModel()).orElseThrow();
                 stockRepository.save(stock);
             } catch (JsonProcessingException ex) {
                 ex.printStackTrace();

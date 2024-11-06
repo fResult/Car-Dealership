@@ -27,7 +27,7 @@ public class CarCollectingUseCases {
     @Transactional
     public CarCollection dropCarAtWarehouse(long carCollectionId) throws ValidationException {
         var carCollection = carCollectingRepository.findCarCollectionById(carCollectionId).orElseThrow();
-        var stock = carCollectingRepository.findStockByModel(carCollection.getCarModel());
+        var stock = carCollectingRepository.findStockByModel(carModel);
 
         carCollection.carDroppedToWarehouse();
         stock.orElseThrow().incrementStockQuantity(1);

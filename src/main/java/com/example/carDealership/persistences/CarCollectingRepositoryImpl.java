@@ -38,8 +38,6 @@ public class CarCollectingRepositoryImpl implements com.example.carDealership.do
 
     @Override
     public Optional<Stock> findStockByModel(String model) {
-        var stocks = stockRepository.findByModel(model);
-
-        return stocks.stream().findFirst();
+        return stockRepository.findOneByModel(model);
     }
 }
