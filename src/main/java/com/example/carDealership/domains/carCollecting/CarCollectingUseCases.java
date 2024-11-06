@@ -13,7 +13,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-// For coordinating with between the Repository and Domain Model
+// NOTE: For coordinating with between the Repository and Domain Model
 @Component
 public class CarCollectingUseCases {
     private final CarCollectingRepositoryImpl carCollectingRepository;
