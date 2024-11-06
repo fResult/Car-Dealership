@@ -1,14 +1,13 @@
 package com.example.carDealership.persistences;
 
-import com.example.carDealership.domains.CarCollectingRepository;
 import com.example.carDealership.domains.carCollecting.entities.CarCollection;
 import com.example.carDealership.domains.warehouse.Stock;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-@Repository
-public class CarCollectingRepositoryImpl implements CarCollectingRepository {
+@Component
+public class CarCollectingRepositoryImpl implements com.example.carDealership.domains.CarCollectingRepository {
 
     private final CarCollectionRepository carCollectionRepository;
     private final StockRepository stockRepository;
@@ -19,7 +18,7 @@ public class CarCollectingRepositoryImpl implements CarCollectingRepository {
     }
 
     /* Note:
-     * The method signature might be DomainEntity -> DomainEntity.
+     * The method signature might be DomainEntity -> DomainEntity as a Pure Repository approach.
      * And when saving the data to the DB, we need to map it to the DAO Entity first.
      */
     @Override
@@ -41,8 +40,6 @@ public class CarCollectingRepositoryImpl implements CarCollectingRepository {
     public Optional<Stock> findStockByModel(String model) {
         var stocks = stockRepository.findByModel(model);
 
-        if (stocks.isEmpty()) return Optional.empty();
-
-        return Optional.of(stockRepository.findByModel(model).getFirst());
+        return stocks.stream().findFirst();
     }
 }
