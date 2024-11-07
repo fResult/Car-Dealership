@@ -13,17 +13,18 @@ import java.util.Date;
 
 @SpringBootApplication
 public class CarDealershipApplication {
-    public static void main(String[] args) {
+    public static void main(String... args) {
         var context = SpringApplication.run(CarDealershipApplication.class, args);
 
         var bus = context.getBean(EventBus.class);
         var warehouseEventHandler = context.getBean(com.example.carDealership.domains.warehouse.EventHandler.class);
         bus.subscribe(warehouseEventHandler);
 
+        // TODO: Remove it when finish creating schedule car collection API
         testScheduleCarCollection();
     }
 
-    public static void testScheduleCarCollection() {
+    private static void testScheduleCarCollection() {
         var registrationId = new VehicleRegistrationId("SS-SS");
         var pickupPlace = new Coordinate(90, 180);
 
