@@ -2,7 +2,8 @@
 
 This is a repository to learn [Tactical Domain Driven Design](https://www.skooldio.com/courses/tactical-domain-driven-design).
 
-Source: https://github.com/chrisza4/spring-ddd
+Architecture & DDD Kata: Online Car Dealership: https://miro.com/app/board/uXjVOAL22H0=
+Original Code: https://github.com/chrisza4/spring-ddd
 
 **Next Improvement:**
 - [ ] Model the domain models such as `ScheduledCarCollection`, `DroppedCarCollection`
