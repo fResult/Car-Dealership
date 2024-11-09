@@ -1,13 +1,19 @@
 plugins {
   java
+  application
   id("org.springframework.boot") version "3.3.5"
   id("io.spring.dependency-management") version "1.1.6"
   id("org.hibernate.orm") version "6.5.3.Final"
 //  id("org.graalvm.buildtools.native") version "0.10.3"
 }
 
-group = "com.example"
+group = "dev.fResult"
 version = "0.0.1"
+val boostrapClassName = "$group.carDealership.CarDealershipApplication"
+
+application {
+  mainClass.set(boostrapClassName) // for `./gradlew run`
+}
 
 java {
   toolchain {
