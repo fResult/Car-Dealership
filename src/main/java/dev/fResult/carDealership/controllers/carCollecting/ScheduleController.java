@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/car-collection")
 public class ScheduleController {
-    @PostMapping("/schedule")
-    public ResponseEntity<CarCollectionResponse> schedule(@RequestBody CarCollectionRequest carCollection) {
-        // var carCollection = CarCollection.schedule();
+  @PostMapping("/schedule")
+  public ResponseEntity<CarCollectionResponse> schedule(
+      @RequestBody CarCollectionRequest carCollection) {
+    // var carCollection = CarCollection.schedule();
 
-        var detail = ProblemDetail.forStatusAndDetail(HttpStatus.METHOD_NOT_ALLOWED, "Not Implement Yet");
-        return ResponseEntity.of(detail).build();
-    }
+    var detail =
+        ProblemDetail.forStatusAndDetail(HttpStatus.METHOD_NOT_ALLOWED, "Not Implement Yet");
+    return ResponseEntity.of(detail).build();
+  }
 }

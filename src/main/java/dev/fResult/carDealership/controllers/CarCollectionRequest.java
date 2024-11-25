@@ -1,4 +1,3 @@
 package dev.fResult.carDealership.controllers;
 
-public class CarCollectionRequest {
-}
+public class CarCollectionRequest {}

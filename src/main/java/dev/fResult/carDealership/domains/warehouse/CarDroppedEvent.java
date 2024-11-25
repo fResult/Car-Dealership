@@ -4,13 +4,13 @@ package dev.fResult.carDealership.domains.warehouse;
  * Declare only necessary properties for CarDroppedEvent
  */
 public class CarDroppedEvent {
-    private String model;
+  private String model;
 
-    public String getModel() {
-        return model;
-    }
+  public String getModel() {
+    return model;
+  }
 
-    public void setModel(String model) {
-        this.model = model;
-    }
+  public void setModel(String model) {
+    this.model = model;
+  }
 }

@@ -2,7 +2,6 @@ package dev.fResult.carDealership.domains;
 
 import dev.fResult.carDealership.domains.carCollecting.entities.CarCollection;
 import dev.fResult.carDealership.domains.warehouse.Stock;
-
 import java.util.Optional;
 
 /* Note:
@@ -10,13 +9,15 @@ import java.util.Optional;
  * So, we need to implements at least these all method first.
  */
 public interface CarCollectingRepository {
-    CarCollection saveCarCollection(CarCollection entity);
+  CarCollection saveCarCollection(CarCollection entity);
 
-    Stock saveStock(Stock entity);
-    // Loading saveLoading(Loading entity);
+  Stock saveStock(Stock entity);
 
-    Optional<CarCollection> findCarCollectionById(long id);
+  // Loading saveLoading(Loading entity);
 
-    Optional<Stock> findStockByModel(String model);
-    // Optional<Loading> findLoadingByXxx(Xxx xxx);
+  Optional<CarCollection> findCarCollectionById(long id);
+
+  Optional<Stock> findStockByModel(String model);
+
+  // Optional<Loading> findLoadingByXxx(Xxx xxx);
 }

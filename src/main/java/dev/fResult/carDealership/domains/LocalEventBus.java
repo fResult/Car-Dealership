@@ -1,10 +1,9 @@
 package dev.fResult.carDealership.domains;
 
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
 
 /* NOTE:
  * We can also use Message Queue Libraries instead of LocalEventBus.
@@ -13,15 +12,15 @@ import java.util.List;
 @Primary
 @Component
 public class LocalEventBus implements EventBus {
-    List<EventBusSubscriber> subscribers = new ArrayList<>();
+  List<EventBusSubscriber> subscribers = new ArrayList<>();
 
-    @Override
-    public void publish(DomainEvent event, String metadata) {
-        subscribers.forEach(subscriber -> subscriber.handleEvent(event, metadata));
-    }
+  @Override
+  public void publish(DomainEvent event, String metadata) {
+    subscribers.forEach(subscriber -> subscriber.handleEvent(event, metadata));
+  }
 
-    @Override
-    public void subscribe(EventBusSubscriber subscriber) {
-        subscribers.add(subscriber);
-    }
+  @Override
+  public void subscribe(EventBusSubscriber subscriber) {
+    subscribers.add(subscriber);
+  }
 }
