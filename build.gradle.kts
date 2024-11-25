@@ -1,7 +1,9 @@
+import org.springframework.boot.gradle.tasks.run.BootRun
+
 plugins {
   java
   application
-  id("org.springframework.boot") version "3.3.5"
+  id("org.springframework.boot") version "3.4.0"
   id("io.spring.dependency-management") version "1.1.6"
   id("org.hibernate.orm") version "6.5.3.Final"
 //  id("org.graalvm.buildtools.native") version "0.10.3"
@@ -17,7 +19,7 @@ application {
 
 java {
   toolchain {
-    languageVersion = JavaLanguageVersion.of(21)
+    languageVersion = JavaLanguageVersion.of(23)
   }
 }
 
@@ -47,8 +49,9 @@ tasks.withType<Test> {
   useJUnitPlatform()
 //  jvmArgs = listOf("-Dnet.bytebuddy.experimental=true")
 }
-//tasks.named("bootRun") {
+
+//tasks.withType<BootRun> {
 //    doFirst {
-//        (this as JavaExec).jvmArgs = listOf("-Dnet.bytebuddy.experimental=true")
+//        jvmArgs = listOf("-Dnet.bytebuddy.experimental=true")
 //    }
 //}
